@@ -27,7 +27,6 @@ import { DeleteTripComponent } from './delete-trip/delete-trip.component';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule
-    // HttpModule
   ],
   providers: [
     TripDataService
