@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
-const Model = mongoose.model("trips");
+const Trip = mongoose.model("trips");
 
+// GET: /trips - lists all the trips
 const tripsList = async (req, res) => {
-    Model
+    Trip
         .find({})
         .exec((err, trips) => {
             if (!trips) {
@@ -21,8 +22,9 @@ const tripsList = async (req, res) => {
         });
 };
 
+// GET: /trips/:tripCode - return a single trip
 const tripsFindCode = async (req, res) => {
-    Model
+    Trip
         .find({ "code": req.params.tripCode })
         .exec((err, trips) => {
             if (!trips) {
@@ -41,8 +43,9 @@ const tripsFindCode = async (req, res) => {
         });
 };
 
+// POST: /trips/:tripCode - add a single trip
 const tripsAddTrip = async (req, res) => {
-    Model
+    Trip
         .create({
             code: req.body.code,
             name: req.body.name,
@@ -66,9 +69,10 @@ const tripsAddTrip = async (req, res) => {
             });
 }
 
+// PUT: /trips/:tripCode - update a single trip
 const tripsUpdateTrip = async (req, res) => {
     console.log(req.body);
-    Model
+    Trip
         .findOneAndUpdate({ 'code': req.params.tripCode }, {
             code: req.body.code,
             name: req.body.name,
@@ -104,9 +108,23 @@ const tripsUpdateTrip = async (req, res) => {
         });
 }
 
+// DELETE: /trips/- delete a single trip
+const tripsDeleteTrip = async (req, res) => {
+    console.log(req.body);
+    Trip
+        .deleteOne({ code: req.params.tripCode }), (err) => {
+            if (err) {
+                return res.status(404).json(err);
+            } else {
+                return res.status(204).json({ message: 'Trip deleted successfully' });
+            }
+        };
+};
+
 module.exports = {
     tripsList,
     tripsFindCode,
     tripsAddTrip,
-    tripsUpdateTrip
+    tripsUpdateTrip,
+    tripsDeleteTrip
 };
