@@ -40,6 +40,7 @@ onSubmit() {
     .then( data => {
     console.log(data);
     this.router.navigate(['']);
+    // this.router.navigate(['list-trip']);
     });
  }
 }

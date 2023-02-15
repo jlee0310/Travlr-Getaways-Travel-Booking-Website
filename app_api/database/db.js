@@ -3,13 +3,6 @@ const host = process.env.DB_HOST || '127.0.0.1'; // Added from the SNHU video
 const dbURL = `mongodb://${host}/travlr`;
 const readLine = require('readline');
 
-
-// let dbURL = 'mongodb://127.0.0.1/Loc8r';
-// if (process.env.NODE_ENV === 'production') {
-//     dbURL = process.env.DB_HOST || process.env.MONGODB_URI;
-// }
-
-// avoid 'current server Discovery and Monitoring engine is deprecated'
 mongoose.set('useUnifiedTopology', true);
 
 const connect = () => {
@@ -70,3 +63,4 @@ connect();
 
 // bring in the Mongoose schema
 require('./models/travlr');
+require('./models/user');

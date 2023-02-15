@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { TripDataService } from '../services/trip-data.service';
-import { Trip } from '../models/trip';
 
 @Component({
   selector: 'app-delete-trip',
@@ -10,33 +9,28 @@ import { Trip } from '../models/trip';
 })
 export class DeleteTripComponent implements OnInit{
 
-
   constructor(
     private tripService: TripDataService,
     private router: Router
-    ) { }
+  ) { }
 
-    ngOnInit(): void {
-        let tripCode = localStorage.getItem("tripCode");
-        console.log(`Inside delete-trip Component and this is tripCode: ${tripCode} #DeleteTrip`);
-        if(!tripCode) {
-          console.log("Can't get stashed tripCode!");
-          this.router.navigate(['']);
-          return;
-        } else {
-          this.tripService.deleteTrip(tripCode);
-        }
-        
-    }
-    ngOnDelete() {
+  ngOnInit(): void {
+    const tripCode = localStorage.getItem("tripCode");
+    console.log(`Inside delete-trip Component and this is tripCode: ${tripCode} #DeleteTrip`);
+    if(!tripCode) {
+      console.log("Can't get stashed tripCode!");
       this.router.navigate(['']);
+      return;
     }
-
+    this.tripService.deleteTrip(tripCode)
+    .then(() => {
+      console.log(`Trip with code ${tripCode} was deleted`);
+      this.router.navigate(['']);
+    })
+    .catch(error => {
+      console.error(`Error deleting trip with code ${tripCode}: ${error}`);
+    });
+  }
 }
-
-
-
-
-
 
 
