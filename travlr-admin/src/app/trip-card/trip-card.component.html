@@ -7,10 +7,11 @@
             {{trip.length}} only {{trip.perPerson|currency:'USD':true}} per person</p>
         <p class="card-text" [innerHTML]="trip.description"></p>
     </div>
-    <div *ngIf="isLoggedIn()">
-        <button (click)="editTrip(trip)" class="btn btn-info">Edit</button>
+
+    <div class="d-flex justify-content-evenly">
+        <button *ngIf="isLoggedIn()" (click)="editTrip(trip)" class="btn btn-info d-inline mr-2">Edit</button>
+        <button *ngIf="isLoggedIn()" (click)="deleteTrip(trip)" routerLink="/delete-trip"
+            class="btn btn-info d-inline ml-2">Delete</button>
     </div>
-    <div *ngIf="isLoggedIn()">
-        <button (click)="deleteTrip(trip)" routerLink="/delete-trip" class="btn btn-info">Delete</button>
-    </div>
+
 </div>
