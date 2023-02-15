@@ -23,11 +23,10 @@ router
     .get(tripsController.tripsList)
     .post(auth, tripsController.tripsAddTrip);
 
-
 router
     .route("/trips/:tripCode")
     .get(tripsController.tripsFindCode)
     .put(auth, tripsController.tripsUpdateTrip)
-    .delete(tripsController.tripsDeleteTrip);
+    .delete(auth, tripsController.tripsDeleteTrip);
 
 module.exports = router;

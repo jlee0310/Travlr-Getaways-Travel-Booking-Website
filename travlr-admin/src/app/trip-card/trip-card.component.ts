@@ -37,6 +37,7 @@ export class TripCardComponent implements OnInit {
     localStorage.setItem("tripCode", trip.code);
     // this.router.navigate(['']);
     this.router.navigate(['delete-trip']);
+ 
   }
 
 }

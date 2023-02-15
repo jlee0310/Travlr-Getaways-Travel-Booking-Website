@@ -75,7 +75,6 @@ const tripsAddTrip = async (req, res) => {
 
 // PUT: /trips/:tripCode - update a single trip
 const tripsUpdateTrip = async (req, res) => {
-    // console.log(req.body);
     getUser(req, res,
         (req, res) => {
             Trip
@@ -117,15 +116,28 @@ const tripsUpdateTrip = async (req, res) => {
 
 // DELETE: /trips/- delete a single trip
 const tripsDeleteTrip = async (req, res) => {
-    console.log(req.body);
-    Trip
-        .deleteOne({ code: req.params.tripCode }), (err) => {
-            if (err) {
-                return res.status(404).json(err);
-            } else {
-                return res.status(204).json({ message: 'Trip deleted successfully' });
-            }
-        };
+    getUser(req, res,
+        (req, res) => {
+            Trip.deleteOne({ 'code': req.params.tripCode }, (err, trip) => {
+                if (err) {
+                    return res
+                        .status(400)
+                        .json(err);
+                } else {
+                    return res
+                        .status(201)
+                        .json(trip);
+                }
+            });
+            // Trip
+            //     .deleteOne({ code: req.params.tripCode }), (err) => {
+            //         if (err) {
+            //             return res.status(404).json(err);
+            //         } else {
+            //             return res.status(204).json({ message: 'Trip deleted successfully' });
+            //         }
+            //     };
+        })
 };
 
 const getUser = (req, res, callback) => {
