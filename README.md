@@ -17,9 +17,4 @@ API testing involves various methods for request and retrieval, such as GET, POS
 
 In this project, we tested the endpoints using different methods to ensure that the API was working as expected. We also added security features, such as authentication and authorization, to protect the application from unauthorized access.
 
-## Reflection
-Upon enrolling in this capstone course at SNHU, I had high expectations for the quality of instruction and resources. However, I was ultimately disappointed by the quality of the instructions and outdated resources. The program appeared hastily thrown together, and I found it to be confusing and unhelpful. As a result, I cannot say that this course provided any significant value to my professional goals.
 
-Despite the challenges, I was able to gain valuable hands-on experience in full-stack web development through a Udemy course. This project allowed me to learn how to use various frontend and backend technologies, including Express HTML, JavaScript, Angular, and MongoDB, among others. I also became familiar with different tools and frameworks, such as Node.js and Angular CLI, which helped improve the performance and scalability of web applications.
-
-While I regret that the course fell short of my expectations, I am grateful for the knowledge and skills I have gained from this experience. I believe that this project showcases my proficiency in full-stack development and highlights my ability to build web applications using the MEAN stack. Moving forward, I am confident that the skills I have developed through this experience will make me a more competitive candidate in my career field.
